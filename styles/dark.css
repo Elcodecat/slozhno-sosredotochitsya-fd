@@ -19,4 +19,6 @@
   --title-color: #db00ff;
   --decorated-zone-color: var(--accent-color);
   --button-color: var(--accent-color);
+  --rec-color: var(--accent-color);
+  --font-family: "IBM Plex Mono", sans-serif;
 }

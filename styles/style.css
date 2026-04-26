@@ -16,21 +16,23 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content 1fr;
-  height: 100vh;
-  min-height: 668px;
-  padding: 10px;
+  padding-inline: 10px;
+  padding-block: 10px;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
 @media (min-width: 768px) {
   .header {
-    min-height: 1024px;
-    padding: 20px;
+    padding-inline: 20px;
+    padding-block: 20px;
+    min-block-size: 1024px;
   }
 }
 
 @media (min-width: 1024px) {
   .header {
-    min-height: 768px;
+    min-block-size: 768px;
   }
 }
 
@@ -38,60 +40,60 @@
 .decorated-zone::after {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
+  inline-size: 25px;
+  block-size: 25px;
 }
 
 .decorated-zone::before {
-  top: 10px;
-  right: 10px;
   border-top: 1px solid var(--decorated-zone-color, #ff0070);
   border-right: 1px solid var(--decorated-zone-color, #ff0070);
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
 }
 
 .decorated-zone::after {
-  bottom: 10px;
-  left: 10px;
   border-bottom: 1px solid var(--decorated-zone-color, #ff0070);
   border-left: 1px solid var(--decorated-zone-color, #ff0070);
+  inset-block-end: 10px;
+  inset-inline-start: 10px;
 }
 
 @media (min-width: 768px) {
   .decorated-zone::before {
-    top: 20px;
-    right: 20px;
+    inset-block-start: 20px;
+    inset-inline-end: 20px;
   }
 
   .decorated-zone::after {
-    bottom: 20px;
-    left: 20px;
+    inset-block-end: 20px;
+    inset-inline-start: 20px;
   }
 }
 
 .rec {
   position: absolute;
-  top: 10px;
-  right: 19px;
-  color: var(--decorated-zone-color, #ff0070);
+  color: var(--rec-color, #ff0070);
   font-size: 18px;
-  line-height: 25px;
+  line-height: 1.39;
+  inset-block-start: 10px;
+  inset-inline-end: 19px;
 }
 
 .rec::after {
   content: "";
   display: inline-block;
-  width: 9px;
-  height: 9px;
-  margin-left: 10px;
+  margin-inline-start: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 4px 2px var(--accent-color, #ff0070);
-  background: var(--accent-color, #ff0070);
+  box-shadow: 0 0 4px 2px var(--rec-color, #ff0070);
+  background: var(--rec-color, #ff0070);
+  inline-size: 9px;
+  block-size: 9px;
 }
 
 @media (min-width: 768px) {
   .rec {
-    top: 20px;
-    right: 29px;
+    inset-block-start: 20px;
+    inset-inline-end: 29px;
   }
 }
 
@@ -135,7 +137,7 @@
   color: var(--button-color, #ff0070);
   font-weight: 400;
   font-size: 18px;
-  line-height: 18px;
+  line-height: 1;
   text-transform: lowercase;
   background: transparent;
   cursor: pointer;
@@ -173,12 +175,8 @@
 @media (min-width: 768px) {
   .header__title {
     position: relative;
-    left: -20px;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  }
-
-  .header__title br {
-    display: none;
+    inset-inline-start: -20px;
   }
 }
 
@@ -186,21 +184,21 @@
   grid-row: 3;
   justify-self: end;
   align-self: center;
-  max-width: 355px;
   font-weight: 700;
   font-size: 18px;
-  line-height: 23.4px;
+  line-height: 1.3;
+  max-inline-size: 355px;
 }
 
 @media (min-width: 768px) {
   .header__subtitle {
-    max-width: 364px;
+    max-inline-size: 364px;
   }
 }
 
 @media (min-width: 1024px) {
   .header__subtitle {
-    max-width: 491px;
+    max-inline-size: 491px;
   }
 }
 
@@ -210,27 +208,29 @@
 }
 
 .content {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding: 0 10px;
+  margin-block-start: 40px;
+  margin-block-end: 40px;
+  padding-inline: 10px;
+  padding-block: 0px;
 }
 
 .section + .section {
-  margin-top: 50px;
+  margin-block-start: 50px;
 }
 
 .section__title {
   color: var(--section-title-text-color, #ff0070);
   font-weight: 700;
   font-size: 18px;
-  line-height: 23.4px;
+  line-height: 1.3;
 }
 
 @media (min-width: 768px) {
   .content {
-    margin-top: 60px;
-    margin-bottom: 60px;
-    padding: 0 20px;
+    margin-block-start: 60px;
+    margin-block-end: 60px;
+    padding-inline: 20px;
+    padding-block: 0px;
   }
 
   .section {
@@ -240,7 +240,7 @@
   }
 
   .section + .section {
-    margin-top: 80px;
+    margin-block-start: 80px;
   }
 
   .section__list {
@@ -269,27 +269,27 @@
 }
 
 .article {
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 @media (min-width: 768px) {
   .article {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
 .article__title {
-  margin-bottom: 10px;
+  margin-block-end: 10px;
   font-weight: 700;
   font-size: 18px;
-  line-height: 23.4px;
+  line-height: 1.3;
 }
 
 .article__text {
   color: var(--text-color, #f1b2ce);
   font-weight: 400;
   font-size: 18px;
-  line-height: 23.4px;
+  line-height: 1.3;
 }
 
 .article__link {
@@ -313,16 +313,16 @@
 }
 
 .article__subtitle {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-block-start: 20px;
+  margin-block-end: 10px;
   font-weight: 400;
   font-size: 18px;
-  line-height: 23.4px;
+  line-height: 1.3;
 }
 
 @media (min-width: 768px) {
   .article__subtitle:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
@@ -330,41 +330,43 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 10px;
+  margin-block-start: 10px;
 }
 
 @media (min-width: 768px) {
   .section_type_gallery .article__title {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   .gallery {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-top: 0;
+    margin-block-start: 0;
   }
 }
 
 .gallery__item {
-  width: 100%;
-  height: 100%;
+  display: block;
   object-fit: cover;
+  object-position: center;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 @media (min-width: 768px) {
-  .gallery__item:nth-child(1) {
+  .gallery li:nth-child(1) {
     grid-column: span 2;
   }
 
-  .gallery__item:nth-child(2) {
+  .gallery li:nth-child(2) {
     grid-row: span 2;
   }
 
-  .gallery__item:nth-child(3) {
+  .gallery li:nth-child(3) {
     grid-row: span 2;
   }
 
-  .gallery__item:nth-child(5) {
+  .gallery li:nth-child(5) {
     grid-column: span 2;
   }
 
@@ -379,21 +381,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  min-height: 668px;
   padding: 10px;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
 @media (min-width: 768px) {
   .footer {
-    min-height: 1024px;
     padding: 20px;
+    min-block-size: 1024px;
   }
 }
 
 @media (min-width: 1024px) {
   .footer {
-    min-height: 768px;
+    min-block-size: 768px;
   }
 }
 

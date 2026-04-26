@@ -18,11 +18,8 @@
   --text-color: var(--primary-color);
   --title-color: #ffc2e6;
   --decorated-zone-color: var(--primary-color);
+  --rec-color: transparent;
   --button-color: var(--primary-color);
-}
-
-.theme-light .rec {
-  display: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -36,9 +33,7 @@
     --text-color: var(--primary-color);
     --title-color: #ffc2e6;
     --decorated-zone-color: var(--primary-color);
+    --rec-color: transparent;
     --button-color: var(--primary-color);
-  }
-  .rec {
-    display: none;
   }
 }
